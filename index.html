@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+    .typing::after {
+      content: '|';
+      animation: blink 0.7s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+  </style>
+</head> 
+<body>
+
+
+  <nav class=" sticky top-0 bg-blue-50 rounded-2xl">
+   <div class="flex justify-between gap-20 h-20 items-center font-mono " >
+    <div >
+    <a class="font-medium font-serif text-2xl ml-5" href="#home"><i class=" text-blue-600 fa-solid fa-house"></i></a></div>
+    <div class="flex gap-20">
+    <div class="hidden md:flex p-3 md:rounded-xl cursor-pointer md: hover:bg-blue-300" ><a href="#skill">Skills</a></div>
+    <div class="hidden md:flex p-3 md:rounded-xl cursor-pointer md: hover:bg-blue-300"><a href="#about">About me</a></div>
+    <div class="hidden md:flex p-3 md:rounded-xl cursor-pointer md: hover:bg-blue-300"><a href="#contact">Contact me</a></div>
+    <div class="hidden md:flex p-3 md:rounded-xl md: hover:bg-blue-300 cursor-pointer"><a href="#pro">Projects</a></div>
+    <div class="hidden md:flex mr-14  p-3 md:rounded-xl cursor-pointer"><i class="fa-solid fa-circle-half-stroke"></i></div>
+    <div class="md:hidden pt-3 justify-end mr-5 text-3xl cursor-pointer"><i class="  text-blue-600 fa-solid fa-bars"></i></div>
+    </div>
+  </div>
+   </nav>
+
+
+
+   <div class="grid grid-col-1 md:grid-cols-2 rounded-3xl p-10 border-2 border-gray-300 mx-5 " id="home">
+  <div class="flex h-auto sm:ml-20">
+    <img  class="items-center  md:flex w-96 h-auto rounded-xl ml-10 mt-10 md:ml-36" src="/img/pic2.jpg" alt="mypic">
+  </div>
+  <div class="flex  flex-col justify-center ml-24 font-semibold font-serif sm:mt-12 sm:ml-28">
+    <p class="text-2xl typing mb-2  text-blue-400" id="typingText">Hello I'm...</p>
+    <p class="text-4xl  text-blue-300" >Abhijith PR</p>
+    <p class="text-lg mt-4 text-blue-500">
+      "Aspiring Go developer with hands-on knowledge<br>
+      And a hunger to grow in real-world projects"
+    </p>
+    <button class="pl-6 mt-3  w-44 p-2 rounded-lg bg-blue-400 hover:bg-blue-300 transition duration-700 ease-in-out"><link rel="Download" href="">Download CV</button>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="mt-32 mx-5 grid-cols-1 md:grid-cols-2  rounded-3xl py-40 px-20 border-2 border-gray-300 " id="about">
+<div class="h-52 pl-10 md:ml-32">
+  <h1 class="font-bold text-2xl pb-3 text-blue-400" >About Me</h1>
+  <p class="w-52 md:w-96 font-serif text-blue-500 ">I'm an aspiring backend developer currently focused on learning Go (Golang).
+     I'm passionate about building efficient, reliable systems and love diving into the fundamentals of APIs, databases, and backend architecture.
+      While I'm still in the early stages of my journey, I'm committed to growing every day through hands-on projects,
+       tutorials, and continuous learning.</p>
+  <div class=" ml-64 -mt-72 w-40 h-48  md:ml-[750px] md:-mt-56 " ><img class="rounded-full" src="/img/PIC4.jpg" alt=""></div>
+  <div class="text-4xl md:text-2xl pt-28 ml-72 -mt-24 md:pt-36 md:-ml-0 text-blue-700">
+  <i class="fa-brands fa-github"></i>
+  <i class="fa-brands fa-linkedin"></i>
+  </div>
+  </div>
+</div>
+
+
+
+
+<div class="h-100svh mt-52 md:mt-[250px] rounded-3xl py-40 px-20 border-2 border-gray-300 mx-5" id="skill">
+  <div class="ml-20 md:ml-52 ">
+ <h1 class="font-semibold text-blue-700 text-3xl mb-5" >My Skills</h1>
+  <p class="w-[500px] md:items-center  md:w-[1200px] text-[20px] text-blue-800 ">Learning this skill was a truly rewarding experience. It gave me a sense of accomplishment and boosted my confidence.
+     Gaining this knowledge not only felt good, but also motivated me to keep exploring and growing further.</p>
+     </div>
+     <div class="flex justify-evenly mt-10 text-5xl md:text-5xl md:flex md:justify-center md:gap-52 md:mt-32 ">
+           <div class="hover:scale-110 transition-all ease-out cursor-pointer  text-blue-700 "><i class="fa-brands fa-node-js"></i></div>
+           <div class="hover:scale-110 transition-all ease-out cursor-pointer  text-blue-700"><i class="fa-brands fa-css3-alt"></i></div>
+           <div class="hover:scale-110 transition-all ease-out cursor-pointer  text-blue-700"><i class="fa-brands fa-html5"></i></div>
+           <div class="hover:scale-110 transition-all ease-out cursor-pointer  text-blue-700"><i class="fa-brands fa-react"></i></div>
+           <div class="hover:scale-110 transition-all ease-out  cursor-pointer text-blue-700"><i class="fa-brands fa-golang"></i></div>
+     </div>
+</div>
+
+
+
+
+<div class="h-100svh rm:ml-20 mt-24 grid-cols-1 md:grid-col-2 rounded-3xl py-60 pt-20 px-20 border-2 border-gray-300 mx-5" id="pro">
+  <h1 class="font-semibold text-blue-700 text-3xl -mt-5 mb-5" >Projects</h1>
+
+  <div class=" md:flex">
+   <div class="mb-10 mr-10 md:w-[600px] md:h-[100px] md:mr-5  hover:cursor-pointer active:cursor-wait"><img class="rounded-xl hover:shadow-xl shadow-cyan-800/50 "  src="/img/react.png" alt="project">
+    <span class="font-serif text-xl text-blue-500 flex justify-center">Hotel Management</span> <span class="font-light text-blue-400 flex justify-center">(MERN)</span></div> 
+    <div class=" mr-10 md:w-[600px] md:h-[100px] md:mr-5  hover:cursor-pointer active:cursor-wait "><img  class="rounded-xl  hover:shadow-xl shadow-cyan-800/50" src="/img/agoda.png" alt="project">
+      <span class=" flex justify-center font-serif text-xl text-blue-500">Agoda clone</span><span class="font-light text-blue-400 flex justify-center">(HTML-CSS)</span></div> 
+</div>
+</div>
+
+
+
+<div class="h-100svh rm:mt-40 rm:ml-20 mt-24 rounded-3xl py-60 pt-20 px-20 border-2 border-gray-300 mx-5" id="contact">
+  <h1 class="mb-5 font-semibold text-blue-700 text-3xl md:mb-5" >Contact Me</h1>
+  <p class=" mb-24 md:mb-16">Let's Contact! im excited to hear from you and expolre how we can word together!</p>
+  <div class="mb-40 md:mb-16">
+  <i class="fa-solid fa-envelope"></i> <span>&nbsp; Email</span><br><span>abhijithpr366@gmail.com</span>
+  </div>
+
+<div class="mb-40 md:mb-16">
+  <i class="fa-solid fa-phone-volume"></i><span>&nbsp; Phone</span><br><span>8590988810</span>
+    </div>
+  <div >
+  <p class="">Get in touch</p>
+  <div class="text-xl">
+  <i class="fa-brands fa-linkedin"></i>
+  <i class="fa-brands fa-github"></i>
+  <i class="fa-brands fa-instagram"></i>
+  <i class="fa-brands fa-whatsapp"></i>
+  </div>
+  </div>
+  <div class=" ml-[250px] -mt-[500px] w-[320px] border-2 border-gray-300  rounded-3xl p-10 md:w-[450px] md:-mt-96 h-100svh  md:ml-[700px]">
+    <input type="text" placeholder="Your name" class=" w-60 mb-3 p-3 md:mb-3 md:w-80 border-2 md:mx-5 rounded-3xl border-gray-300"><br>
+    <input type="email" placeholder="Email"  class="p-3  mb-3 md:mb-3 w-60 md:w-80 border-2 md:mx-5 rounded-3xl border-gray-300"><br>
+    <textarea name="" id="" placeholder="Message"  class="p-3 w-60 mb-3 md:w-80 h-60 border-2  md:mx-5 rounded-3xl border-gray-300"></textarea><br>
+    <button type="submit" class="p-3 ml-12 bg-blue-500  rounded-3xl w-40 md:w-56 border-2  border-gray-300">Send Message</button>
+</div>
+
+</div>
+<script>
+  // const text = "Hello I'm...";
+  // let i = 0;
+  // const el = document.getElementById("typingText");
+
+  // setInterval(() => {
+  //   el.textContent = text.slice(0, i++);
+  //   if (i > text.length) i = 0;
+  // }, 150);
+
+
+// </script>
+</body>
+</html>
