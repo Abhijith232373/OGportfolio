@@ -5,6 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
+
+<script src="index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">
+  (function () {
+    emailjs.init({
+      publicKey: "PxDz3N--59n4ohwXy", // Make sure this key is correct
+    });
+  })();
+</script>
+
+
+
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
     .typing::after {
@@ -16,31 +30,70 @@
       0%, 100% { opacity: 1; }
       50% { opacity: 0; }
     }
+  
+    .dropdown{
+      display: inline-block;
+    }
+    .dropdown a{
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+    }
+    .dropdown .content{
+      display: none;
+      position:absolute;
+      background-color:rgb(94, 94, 236);
+      min-width: 100px;
+      box-shadow: 2px 2px 5px blue;
+
+    }
+    .dropdown:hover .content{
+      display: block;
+    }
+    
+
+
+    
   </style>
 </head> 
-<body>
+<body >
+
+<div id="toast" class="fixed top-5 right-5 hidden bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transition-opacity duration-300"></div>
 
 
-  <nav class=" sticky top-0 bg-blue-50 rounded-2xl">
-   <div class="flex justify-between gap-20 h-20 items-center font-mono " >
+
+  <nav id="navbar" class=" sticky top-0 bg-blue-50 rounded-2xl">
+   <div class="flex justify-between gap-20 h-20 items-center font-bold text-blue-600 " >
     <div >
-    <a class="font-medium font-serif text-2xl ml-5" href="#home"><i class=" text-blue-600 fa-solid fa-house"></i></a></div>
+    <a class="font-medium  text-2xl ml-5" href="#home"><i class=" text-blue-600 fa-solid fa-house"></i></a></div>
     <div class="flex gap-20">
-    <div class="hidden md:flex p-3 md:rounded-xl cursor-pointer md: hover:bg-blue-300" ><a href="#skill">Skills</a></div>
-    <div class="hidden md:flex p-3 md:rounded-xl cursor-pointer md: hover:bg-blue-300"><a href="#about">About me</a></div>
-    <div class="hidden md:flex p-3 md:rounded-xl cursor-pointer md: hover:bg-blue-300"><a href="#contact">Contact me</a></div>
-    <div class="hidden md:flex p-3 md:rounded-xl md: hover:bg-blue-300 cursor-pointer"><a href="#pro">Projects</a></div>
-    <div class="hidden md:flex mr-14  p-3 md:rounded-xl cursor-pointer"><i class="fa-solid fa-circle-half-stroke"></i></div>
-    <div class="md:hidden pt-3 justify-end mr-5 text-3xl cursor-pointer"><i class="  text-blue-600 fa-solid fa-bars"></i></div>
+    <div class="hidden md:flex p-3 md:rounded-xl cursor-pointer md: hover:bg-blue-300 active:cursor-wait" ><a href="#skill">Skills</a></div>
+    <div class="hidden md:flex p-3 md:rounded-xl cursor-pointer md: hover:bg-blue-300 active:cursor-wait"><a href="#about">About me</a></div>
+    <div class="hidden md:flex p-3 md:rounded-xl cursor-pointer md: hover:bg-blue-300 active:cursor-wait"><a href="#contact">Contact me</a></div>
+    <div class="hidden md:flex p-3 md:rounded-xl md: hover:bg-blue-300 cursor-pointer active:cursor-wait"><a href="#pro">Projects</a></div>
+    <div class="-mr-16 text-2xl md:flex md:mr-14  p-3 md:rounded-xl cursor-pointer"><i class="fa-solid fa-circle-half-stroke" id="toggleBtn"></i></div>
+    
+   <div class="dropdown">
+          <button class="md:hidden pt-3 justify-end mr-5 text-3xl cursor-pointer"><i class="  text-blue-600 fa-solid fa-bars"></i></button>
+          <div class="content">
+            <a class="text-blue-600" href="#skill">Skills</a>
+            <a class="text-blue-600" href="#about">About me</a>
+            <a class="text-blue-600" href="#contact">Contact</a>
+            <a class="text-blue-600" href="#pro">Projects</a>
+          </div>
+   </div>
+
     </div>
   </div>
    </nav>
 
 
 
-   <div class="grid grid-col-1 md:grid-cols-2 rounded-3xl p-10 border-2 border-gray-300 mx-5 " id="home">
-  <div class="flex h-auto sm:ml-20">
-    <img  class="items-center  md:flex w-96 h-auto rounded-xl ml-10 mt-10 md:ml-36" src="/img/pic2.jpg" alt="mypic">
+
+   <div class="grid grid-col-1 md:grid-cols-2 rounded-3xl p-10 border-2 border-blue-400 mx-5  shadow-lg shadow-indigo-500/50 " id="home">
+  <div class="flex h-auto sm:ml-20 md:-ml-20  ">
+    <img  class="items-center  md:flex w-96 h-auto rounded-xl ml-10 mt-10 md:ml-36 hover:scale-105 transition-all ease  cursor-pointer  border-blue-400 mx-5  shadow-lg shadow-indigo-900/90" src="/img/pic2.jpg" alt="mypic">
   </div>
   <div class="flex  flex-col justify-center ml-24 font-semibold font-serif sm:mt-12 sm:ml-28">
     <p class="text-2xl typing mb-2  text-blue-400" id="typingText">Hello I'm...</p>
@@ -49,24 +102,24 @@
       "Aspiring Go developer with hands-on knowledge<br>
       And a hunger to grow in real-world projects"
     </p>
-    <button class="pl-6 mt-3  w-44 p-2 rounded-lg bg-blue-400 hover:bg-blue-300 transition duration-700 ease-in-out"><link rel="Download" href="">Download CV</button>
+    <button class="pl-6 mt-3  w-44 p-2 rounded-lg bg-blue-400 hover:bg-blue-300 transition duration-700 ease-in-out active:cursor-wait" id="downloadBtn">Download CV</button>
     </div>
   </div>
 </div>
 
 
 
-<div class="mt-32 mx-5 grid-cols-1 md:grid-cols-2  rounded-3xl py-40 px-20 border-2 border-gray-300 " id="about">
+<div class="mt-32 mx-5 grid-cols-1 md:grid-cols-2 pt-16 rounded-3xl py-52 px-20 border-2 border-blue-400  shadow-lg shadow-indigo-500/50" id="about">
 <div class="h-52 pl-10 md:ml-32">
-  <h1 class="font-bold text-2xl pb-3 text-blue-400" >About Me</h1>
-  <p class="w-52 md:w-96 font-serif text-blue-500 ">I'm an aspiring backend developer currently focused on learning Go (Golang).
+  <h1 class="font-bold text-2xl pb-3 text-blue-400  md:-ml-32" >About Me</h1>
+  <p class="w-52 md:w-96 font-serif text-blue-500  md:-ml-32 ">I'm an aspiring backend developer currently focused on learning Go (Golang).
      I'm passionate about building efficient, reliable systems and love diving into the fundamentals of APIs, databases, and backend architecture.
       While I'm still in the early stages of my journey, I'm committed to growing every day through hands-on projects,
        tutorials, and continuous learning.</p>
-  <div class=" ml-64 -mt-72 w-40 h-48  md:ml-[750px] md:-mt-56 " ><img class="rounded-full" src="/img/PIC4.jpg" alt=""></div>
-  <div class="text-4xl md:text-2xl pt-28 ml-72 -mt-24 md:pt-36 md:-ml-0 text-blue-700">
-  <i class="fa-brands fa-github"></i>
-  <i class="fa-brands fa-linkedin"></i>
+  <div class=" ml-52 -mt-72 w-auto h-auto  md:ml-[750px] md:-mt-56 " ><img class="rounded-full " src="/img/about.jpg" alt=""></div>
+  <div class="text-4xl md:text-2xl pt-28 ml-72 -mt-24 md:pt-36  text-blue-700  md:-ml-32">
+  <a href="https://github.com/Abhijith232373"><i class="hover:scale-110 transition-all ease-out  cursor-pointer text-blue-700  active:cursor-wait fa-brands fa-github"></i></a>
+  <a href="https://www.linkedin.com/in/abhijith-p-r-804a6b317/"><i class="hover:scale-110 transition-all ease-out  cursor-pointer text-blue-700 active:cursor-wait fa-brands fa-linkedin"></i></a>
   </div>
   </div>
 </div>
@@ -74,74 +127,162 @@
 
 
 
-<div class="h-100svh mt-52 md:mt-[250px] rounded-3xl py-40 px-20 border-2 border-gray-300 mx-5" id="skill">
+<div class="h-100svh mt-52 md:mt-[250px] rounded-3xl py-40 px-20 border-2 border-blue-400  shadow-lg shadow-indigo-500/50 mx-5 " id="skill">
   <div class="ml-20 md:ml-52 ">
- <h1 class="font-semibold text-blue-700 text-3xl mb-5" >My Skills</h1>
-  <p class="w-[500px] md:items-center  md:w-[1200px] text-[20px] text-blue-800 ">Learning this skill was a truly rewarding experience. It gave me a sense of accomplishment and boosted my confidence.
+ <h1 class="font-semibold text-blue-700 text-3xl -ml-14 md:-ml-48 mb-5" >My Skills</h1>
+  <p class="w-[500px] md:items-center  md:w-[1200px] text-[20px] text-blue-800 -ml-16 md:-ml-48">Learning this skill was a truly rewarding experience. It gave me a sense of accomplishment and boosted my confidence.
      Gaining this knowledge not only felt good, but also motivated me to keep exploring and growing further.</p>
      </div>
-     <div class="flex justify-evenly mt-10 text-5xl md:text-5xl md:flex md:justify-center md:gap-52 md:mt-32 ">
-           <div class="hover:scale-110 transition-all ease-out cursor-pointer  text-blue-700 "><i class="fa-brands fa-node-js"></i></div>
-           <div class="hover:scale-110 transition-all ease-out cursor-pointer  text-blue-700"><i class="fa-brands fa-css3-alt"></i></div>
-           <div class="hover:scale-110 transition-all ease-out cursor-pointer  text-blue-700"><i class="fa-brands fa-html5"></i></div>
-           <div class="hover:scale-110 transition-all ease-out cursor-pointer  text-blue-700"><i class="fa-brands fa-react"></i></div>
-           <div class="hover:scale-110 transition-all ease-out  cursor-pointer text-blue-700"><i class="fa-brands fa-golang"></i></div>
+     <div class="flex md:-ml-48 justify-evenly mt-10 text-5xl md:text-5xl md:flex md:justify-center md:gap-52 md:mt-32 ">
+           <div class="hover:scale-110 transition-all ease-out cursor-pointer  text-blue-700  active:cursor-wait"><i class="fa-brands fa-node-js"></i></div>
+           <div class="hover:scale-110 transition-all ease-out cursor-pointer  text-blue-700 active:cursor-wait"><i class="fa-brands fa-css3-alt"></i></div>
+           <div class="hover:scale-110 transition-all ease-out cursor-pointer  text-blue-700 active:cursor-wait"><i class="fa-brands fa-html5"></i></div>
+           <div class="hover:scale-110 transition-all ease-out cursor-pointer  text-blue-700 active:cursor-wait"><i class="fa-brands fa-react"></i></div>
+           <div class="hover:scale-110 transition-all ease-out  cursor-pointer text-blue-700 active:cursor-wait"><i class="fa-brands fa-golang"></i></div>
      </div>
 </div>
 
 
 
 
-<div class="h-100svh rm:ml-20 mt-24 grid-cols-1 md:grid-col-2 rounded-3xl py-60 pt-20 px-20 border-2 border-gray-300 mx-5" id="pro">
+<div class="h-100svh rm:ml-20 mt-24 grid-cols-1 md:grid-col-2 rounded-3xl py-60 pt-20 px-20 border-2 border-blue-400  shadow-lg shadow-indigo-500/50 mx-5" id="pro">
   <h1 class="font-semibold text-blue-700 text-3xl -mt-5 mb-5" >Projects</h1>
 
   <div class=" md:flex">
-   <div class="mb-10 mr-10 md:w-[600px] md:h-[100px] md:mr-5  hover:cursor-pointer active:cursor-wait"><img class="rounded-xl hover:shadow-xl shadow-cyan-800/50 "  src="/img/react.png" alt="project">
+   <div class="mb-10 mr-10 md:w-[600px] md:h-[100px] md:mr-5  hover:cursor-pointer active:cursor-wait"><img class="rounded-xl hover:shadow-xl shadow-blue-950/50 "  src="/img/react.png" alt="project">
     <span class="font-serif text-xl text-blue-500 flex justify-center">Hotel Management</span> <span class="font-light text-blue-400 flex justify-center">(MERN)</span></div> 
-    <div class=" mr-10 md:w-[600px] md:h-[100px] md:mr-5  hover:cursor-pointer active:cursor-wait "><img  class="rounded-xl  hover:shadow-xl shadow-cyan-800/50" src="/img/agoda.png" alt="project">
+    <div class=" mr-10 md:w-[600px] md:h-[100px] md:mr-5  hover:cursor-pointer active:cursor-wait "><img  class="rounded-xl  hover:shadow-xl shadow-cyan-950/50" src="/img/agoda.png" alt="project">
       <span class=" flex justify-center font-serif text-xl text-blue-500">Agoda clone</span><span class="font-light text-blue-400 flex justify-center">(HTML-CSS)</span></div> 
 </div>
 </div>
 
 
-<div class="h-100svh rm:mt-40 rm:ml-20 mt-24 rounded-3xl py-60 pt-20 px-20 border-2 border-gray-300 mx-5" id="contact">
+<div class="h-100svh rm:mt-40 rm:ml-20 mt-24 rounded-3xl py-60 pt-20 px-20 border-2 mb-24 pb-14 border-blue-400  shadow-lg shadow-indigo-500/50 mx-5" id="contact">
   <h1 class="mb-5 font-semibold text-blue-700 text-3xl md:mb-5" >Contact Me</h1>
   <p class=" mb-24 md:mb-16">Let's Contact! im excited to hear from you and expolre how we can word together!</p>
   <div class="mb-40 md:mb-16">
-  <i class="fa-solid fa-envelope"></i> <span>&nbsp; Email</span><br><span>abhijithpr366@gmail.com</span>
+  <i class="hover:scale-110 transition-all ease-out cursor-pointer  text-blue-700 fa-solid fa-envelope"></i> <span>&nbsp; Email</span><br><span>abhijithpr366@gmail.com</span>
   </div>
 
 <div class="mb-40 md:mb-16">
-  <i class="fa-solid fa-phone-volume"></i><span>&nbsp; Phone</span><br><span>8590988810</span>
+  <i class="hover:scale-110 transition-all ease-out cursor-pointer  text-blue-700 fa-solid fa-phone-volume"></i><span>&nbsp; Phone</span><br><span>8590988810</span>
     </div>
   <div >
   <p class="">Get in touch</p>
   <div class="text-xl">
-  <i class="fa-brands fa-linkedin"></i>
-  <i class="fa-brands fa-github"></i>
-  <i class="fa-brands fa-instagram"></i>
-  <i class="fa-brands fa-whatsapp"></i>
+  <a href="https://www.linkedin.com/in/abhijith-p-r-804a6b317/"><i class="hover:scale-110 transition-all ease-out cursor-pointer  text-blue-700 fa-brands fa-linkedin"></i></a>
+  <a href="https://github.com/Abhijith232373"><i class="hover:scale-110 transition-all ease-out cursor-pointer  text-blue-700 fa-brands fa-github"></i></a>
+  <a href="https://leetcode.com/u/Abhijith_PR/"><i class="hover:scale-110 transition-all ease-out cursor-pointer  text-blue-700 fa-brands fa-instagram"></i></a>
+  <i class="hover:scale-110 transition-all ease-out cursor-pointer  text-blue-700 fa-brands fa-whatsapp"></i>
   </div>
   </div>
-  <div class=" ml-[250px] -mt-[500px] w-[320px] border-2 border-gray-300  rounded-3xl p-10 md:w-[450px] md:-mt-96 h-100svh  md:ml-[700px]">
-    <input type="text" placeholder="Your name" class=" w-60 mb-3 p-3 md:mb-3 md:w-80 border-2 md:mx-5 rounded-3xl border-gray-300"><br>
-    <input type="email" placeholder="Email"  class="p-3  mb-3 md:mb-3 w-60 md:w-80 border-2 md:mx-5 rounded-3xl border-gray-300"><br>
-    <textarea name="" id="" placeholder="Message"  class="p-3 w-60 mb-3 md:w-80 h-60 border-2  md:mx-5 rounded-3xl border-gray-300"></textarea><br>
-    <button type="submit" class="p-3 ml-12 bg-blue-500  rounded-3xl w-40 md:w-56 border-2  border-gray-300">Send Message</button>
-</div>
+<form id="contact-form" class="ml-[150px] -mt-[500px] w-[320px]  md:border-2 border-gray-300 rounded-3xl p-10 md:w-[450px] md:-mt-96 h-100svh md:ml-[700px]">
+  <input id="name" name="name" type="text" placeholder="Your name" class="w-60 mb-3 p-3 md:mb-3 md:w-80 border-2 md:mx-5 rounded-3xl border-gray-300"><br>
+  <input id="email" name="email" type="email" placeholder="Email" class="p-3 mb-3 md:mb-3 w-60 md:w-80 border-2 md:mx-5 rounded-3xl border-gray-300"><br>
+  <textarea id="message" name="message" placeholder="Message" class="p-3 w-60 mb-3 md:w-80 h-60 border-2 md:mx-5 rounded-3xl border-gray-300"></textarea><br>
+  <button type="submit" class="p-3 ml-12 bg-blue-500 rounded-3xl w-40 md:w-56 border-2 border-gray-300 hover:scale-110 transition-all ease-out active:cursor-wait">Send Message</button>
+</form>
 
 </div>
+<h1 class="flex justify-center  mb-2 font-serif text-blue-900">© Copyright  Designed by Abhijith PR </h1>
 <script>
-  // const text = "Hello I'm...";
-  // let i = 0;
-  // const el = document.getElementById("typingText");
+   const text = "Hello I'm...";
+  let i = 0;
+  const el = document.getElementById("typingText");
 
-  // setInterval(() => {
-  //   el.textContent = text.slice(0, i++);
-  //   if (i > text.length) i = 0;
-  // }, 150);
+  setInterval(() => {
+    el.textContent = text.slice(0, i++);
+    if (i > text.length) i = 0;
+  }, 150);
 
 
-// </script>
+
+
+
+
+  function showToast(message, isError = false) {
+    const toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.classList.remove("hidden");
+    toast.classList.add(isError ? "bg-red-500" : "bg-green-500");
+
+    setTimeout(() => {
+      toast.classList.add("hidden");
+    }, 3000);
+  }
+
+  document.getElementById('contact-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    if (!name || !email || !message) {
+      showToast("Please fill in all fields.", true);
+      return;
+    }
+
+    emailjs.send("service_8ggrmxn", "template_dr9chjn", {
+      from_name: name,
+      from_email: email,
+      message: message,
+    }).then(
+      function () {
+        showToast("Message sent successfully!");
+        document.getElementById('contact-form').reset();
+      },
+      function (error) {
+        console.error("Email sending failed:", error);
+        showToast("Failed to send message. Try again later.", true);
+      }
+    );
+  });
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const downloadBtn = document.getElementById('downloadBtn');
+
+  downloadBtn.addEventListener('click', () => {
+    // Create an invisible link
+    const link = document.createElement('a');
+    link.href = ''; // 
+    link.download = 'CV.pdf'; 
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  });
+});
+
+
+
+    const body = document.body;
+    const navbar = document.getElementById('navbar');
+    const button = document.getElementById('toggleBtn');
+
+    let isDark = false;
+
+    button.addEventListener('click', () => {
+      isDark = !isDark;
+
+      // Body toggle
+      body.classList.toggle('bg-black', isDark);
+      body.classList.toggle('text-white', isDark);
+      body.classList.toggle('bg-white', !isDark);
+      body.classList.toggle('text-black', !isDark);
+
+      // Navbar toggle
+      navbar.classList.toggle('bg-black', isDark);
+      navbar.classList.toggle('text-white', isDark);
+      navbar.classList.toggle('bg-white', !isDark);
+      navbar.classList.toggle('text-black', !isDark);
+    });
+</script>
 </body>
 </html>
